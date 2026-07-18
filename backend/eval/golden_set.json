@@ -1,0 +1,54 @@
+[
+  {
+    "query": "Should I pay the ambulance bill myself if I'm a MASA member?",
+    "expect_keywords_any": ["send", "MASA", "bill"],
+    "expect_no_hallucination_of": ["reimburse yourself", "pay it and we'll refund"]
+  },
+  {
+    "query": "Does MASA own the ambulances that pick people up?",
+    "expect_keywords_any": ["third-party", "does not own", "not a provider"]
+  },
+  {
+    "query": "What happens if the ambulance that treats me is out-of-network with my health insurance?",
+    "expect_keywords_any": ["out-of-network", "balance bill", "all ambulance"]
+  },
+  {
+    "query": "If I'm traveling to Jamaica, am I covered?",
+    "expect_keywords_any": ["Caribbean", "itinerary", "10 days"]
+  },
+  {
+    "query": "Can my grandchild be added to my MASA plan?",
+    "expect_keywords_any": ["grandchild", "age 14", "Lifetime"]
+  },
+  {
+    "query": "What's the deductible on a MASA plan?",
+    "expect_keywords_any": ["deductible", "health insurance"],
+    "notes": "MASA doesn't set 'a deductible' itself in this sense -- checks the model doesn't invent a specific dollar figure for a MASA-specific deductible."
+  },
+  {
+    "query": "Will MASA cover a private hospital room upgrade?",
+    "expect_keywords_any": ["private hospital room", "reimburse"]
+  },
+  {
+    "query": "Does MASA have a nurse helpline for while I'm abroad?",
+    "expect_keywords_any": ["nurse", "Lifetime"]
+  },
+  {
+    "query": "How much does MASA pay for foreign currency emergency transport prepayment?",
+    "expect_keywords_any": ["$50,000", "Lifetime"]
+  },
+  {
+    "query": "If I get sick on a cruise and need to be evacuated, does MASA help?",
+    "expect_keywords_any": ["cruise", "Emergency Shield Plus"]
+  },
+  {
+    "query": "What's the weather like in Sunrise, Florida?",
+    "expect_keywords_any": [],
+    "expect_refusal": true,
+    "notes": "Off-topic question -- the model should say it can't answer from the knowledge base rather than making something up."
+  },
+  {
+    "query": "Can MASA get my pet home if I'm taken away by ambulance?",
+    "expect_keywords_any": ["pet"]
+  }
+]

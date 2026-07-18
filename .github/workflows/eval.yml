@@ -1,0 +1,26 @@
+name: Eval
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch: {}
+
+jobs:
+  run-golden-set:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install eval dependencies
+        run: pip install httpx
+
+      - name: Run golden set against deployed API
+        env:
+          # Set this repo secret to your deployed backend's public URL
+          # (e.g. https://coverage-copilot.fly.dev) in Settings -> Secrets -> Actions.
+          API_URL: ${{ secrets.DEPLOYED_API_URL }}
+        run: python backend/eval/run_eval.py --url "$API_URL"
