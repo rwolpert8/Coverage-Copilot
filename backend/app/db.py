@@ -31,7 +31,11 @@ EMBEDDING_DIM = 384
 def get_conn():
     conn = psycopg2.connect(DATABASE_URL)
     try:
-        register_vector(conn)
+        # Try to register vector type, but don't fail if extension doesn't exist yet
+        try:
+            register_vector(conn)
+        except psycopg2.ProgrammingError:
+            pass  # Extension will be created by init_db()
         yield conn
         conn.commit()
     except Exception:
