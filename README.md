@@ -6,8 +6,6 @@ public FAQ and benefits pages as its knowledge base.
 
 > **Note**: Live deployment is currently in progress. The instructions below are for running the application locally.
 
-## Demo
-
 ![Coverage Copilot Interface](docs/images/demo.png)
 
 ## Why this domain
