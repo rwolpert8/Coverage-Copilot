@@ -68,3 +68,31 @@ def ask(req: AskRequest):
 @app.get("/stats")
 def stats():
     return db.get_stats()
+
+
+@app.get("/ingest")
+def ingest():
+    """Temporary endpoint to ingest seed data into Railway database."""
+    import json
+    from pathlib import Path
+    
+    seed_dir = Path(__file__).resolve().parents[2] / "data" / "seed"
+    
+    db.clear_documents()
+    total = 0
+    
+    for path in sorted(seed_dir.glob("*.json")):
+        doc = json.loads(path.read_text())
+        for section in doc["sections"]:
+            chunk_text = section["text"]
+            embedding = rag.embed_text(f"{section['heading']}\n{chunk_text}")
+            db.insert_document(
+                source_url=doc["source_url"],
+                title=doc["title"],
+                heading=section["heading"],
+                text=chunk_text,
+                embedding=embedding,
+            )
+            total += 1
+    
+    return {"status": "success", "chunks_ingested": total}
