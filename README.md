@@ -4,6 +4,8 @@ A small RAG (retrieval-augmented generation) app that answers member questions
 about MASA's emergency medical transportation benefits, using MASA's own
 public FAQ and benefits pages as its knowledge base.
 
+> **Note**: Live deployment is currently in progress. The instructions below are for running the application locally.
+
 ## Why this domain
 
 MASA's core product is helping members understand what's covered, when, and
