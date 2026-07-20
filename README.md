@@ -10,8 +10,6 @@ public FAQ and benefits pages as its knowledge base.
 
 ![Coverage Copilot Interface](docs/images/demo.png)
 
-*RAG-powered chat interface answering MASA coverage questions with source citations and retrieval confidence*
-
 ## Why this domain
 
 MASA's core product is helping members understand what's covered, when, and
